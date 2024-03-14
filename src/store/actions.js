@@ -16,13 +16,6 @@
 //   }
 // }
 //
-// export const removeTodo = (id) => {
-//   return {
-//     type: REMOVE_TODO,
-//     payload: { id },
-//   }
-// }
-//
 // export const markCompleted = (id) => {
 //   return {
 //     type: MARK_COMPLETED,

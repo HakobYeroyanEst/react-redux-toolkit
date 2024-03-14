@@ -28,13 +28,6 @@
 //         searchTerm: state.searchTerm,
 //       }
 //
-//     case REMOVE_TODO:
-//       return {
-//         todos: state.todos.filter((todo, index) => index !== action.payload.id),
-//         filter: state.filter,
-//         searchTerm: state.searchTerm,
-//       }
-//
 //     case MARK_COMPLETED:
 //       return {
 //         todos: state.todos.map((todo, index) =>
@@ -72,18 +65,13 @@ import { createSlice } from '@reduxjs/toolkit'
 export const todoSlice = createSlice({
   name: 'todo',
   initialState: {
-    todos: [
-      { tex: 'asd', completed: false },
-      { tex: 'ssd', completed: true },
-      { tex: 'sdsd', completed: true },
-      { tex: 'dsds', completed: false },
-    ],
+    todos: [],
     todoFilter: 'all',
     searchTerm: '',
   },
   reducers: {
     addTodo: (state, action) => {
-      state.todos = [...state.todos, { text: action.payload, completed: false }]
+      state.todos = [...state.todos, { text: action.payload.text, completed: false, id: action.payload.id }]
     },
     updateSearchTerm: (state, action) => {
       state.searchTerm = action.payload
@@ -91,9 +79,12 @@ export const todoSlice = createSlice({
     filterTodos: (state, action) => {
       state.todoFilter = action.payload
     },
+    deleteTodo: (state, action) => {
+      state.todos = [...state.todos.filter((todo) => todo.id !== action.payload)]
+    },
   },
 })
 
-export const { addTodo, updateSearchTerm, filterTodos } = todoSlice.actions
+export const { addTodo, updateSearchTerm, filterTodos, deleteTodo } = todoSlice.actions
 
 export default todoSlice.reducer

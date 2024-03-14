@@ -17,7 +17,7 @@ const Todo = () => {
   const handleAddTodo = () => {
     const newTodoRawValue = newTodoText.trim()
     if (newTodoRawValue) {
-      dispatch(addTodo(newTodoRawValue))
+      dispatch(addTodo({ text: newTodoRawValue, id: Math.random().toString(16).slice(2) }))
       setNewTodoText('')
     }
   }
