@@ -37,20 +37,6 @@
 //   }
 // }
 //
-// export const filterTodos = (filter) => {
-//   return {
-//     type: FILTER_TODOS,
-//     payload: { filter },
-//   }
-// }
-//
 // export const markAllCompleted = () => {
 //   return { type: MARK_ALL_COMPLETED }
-// }
-//
-// export const updateSearch = (searchValue) => {
-//   return {
-//     type: UPDATE_SEARCH_TERM,
-//     payload: { searchTerm },
-//   }
 // }

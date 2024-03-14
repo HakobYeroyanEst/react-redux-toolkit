@@ -53,20 +53,6 @@
 //         searchTerm: state.searchTerm,
 //       }
 //
-//     case FILTER_TODOS:
-//       return {
-//         todos: state.todos,
-//         filter: action.payload.filter,
-//         searchTerm: state.searchTerm,
-//       }
-//
-//     case UPDATE_SEARCH_TERM:
-//       return {
-//         todos: state.todos,
-//         filter: state.filter,
-//         searchTerm: action.payload.searchTerm,
-//       }
-//
 //     case MARK_ALL_COMPLETED:
 //       return {
 //         todos: state.todos.map((todo) => ({ ...todo, completed: true })),
@@ -86,8 +72,13 @@ import { createSlice } from '@reduxjs/toolkit'
 export const todoSlice = createSlice({
   name: 'todo',
   initialState: {
-    todos: [],
-    filter: 'All',
+    todos: [
+      { tex: 'asd', completed: false },
+      { tex: 'ssd', completed: true },
+      { tex: 'sdsd', completed: true },
+      { tex: 'dsds', completed: false },
+    ],
+    todoFilter: 'all',
     searchTerm: '',
   },
   reducers: {
@@ -97,9 +88,12 @@ export const todoSlice = createSlice({
     updateSearchTerm: (state, action) => {
       state.searchTerm = action.payload
     },
+    filterTodos: (state, action) => {
+      state.todoFilter = action.payload
+    },
   },
 })
 
-export const { addTodo, updateSearchTerm } = todoSlice.actions
+export const { addTodo, updateSearchTerm, filterTodos } = todoSlice.actions
 
 export default todoSlice.reducer
