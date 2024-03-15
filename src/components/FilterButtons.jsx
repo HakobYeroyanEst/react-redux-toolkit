@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-import { filterTodos } from '../store/todoSlice.js'
+import { filterTodos, markAllCompleted } from '../store/todoSlice.js'
 
 const FilterButtons = () => {
   const dispatch = useDispatch()
@@ -8,6 +8,10 @@ const FilterButtons = () => {
 
   const handleFilterChange = (e) => {
     dispatch(filterTodos(e.target.value))
+  }
+
+  const markAllTodos = (e) => {
+    dispatch(markAllCompleted())
   }
 
   return (
@@ -22,7 +26,9 @@ const FilterButtons = () => {
         <option value="incomplete">Incomplete</option>
       </select>
 
-      <button className="text-sm px-2 py-1 bg-purple-500 text-white rounded ml-2">Mark All Completed</button>
+      <button className="text-sm px-2 py-1 bg-purple-500 text-white rounded ml-2" onClick={markAllTodos}>
+        Mark All Completed
+      </button>
     </div>
   )
 }

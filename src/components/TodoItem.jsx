@@ -1,13 +1,21 @@
 import { useDispatch } from 'react-redux'
 import { FaTrash, FaCheck, FaTimes } from 'react-icons/fa'
 
-import { deleteTodo } from '../store/todoSlice.js'
+import { deleteTodo, markCompleted, markIncomplete } from '../store/todoSlice.js'
 
 const TodoItem = ({ todoItem, index }) => {
   const dispatch = useDispatch()
 
   const handleTodoDeletion = () => {
     dispatch(deleteTodo(todoItem.id))
+  }
+
+  const handleTodoCompletion = () => {
+    dispatch(markCompleted(todoItem.id))
+  }
+
+  const handleTodoIncomplete = () => {
+    dispatch(markIncomplete(todoItem.id))
   }
 
   return (
@@ -21,12 +29,12 @@ const TodoItem = ({ todoItem, index }) => {
           <FaTrash />
         </button>
         {!todoItem.completed && (
-          <button className="text-sm bg-green-500 text-white sm:px-2 px-1 py-1 rounded">
+          <button className="text-sm bg-green-500 text-white sm:px-2 px-1 py-1 rounded" onClick={handleTodoCompletion}>
             <FaCheck />
           </button>
         )}
         {todoItem.completed && (
-          <button className="text-sm bg-yellow-500 text-white sm:px-2 px-1 py-1 rounded">
+          <button className="text-sm bg-yellow-500 text-white sm:px-2 px-1 py-1 rounded" onClick={handleTodoIncomplete}>
             <FaTimes />
           </button>
         )}
